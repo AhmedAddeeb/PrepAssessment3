@@ -25,26 +25,30 @@
 
   //create a function when invoked returns the name of that employee.
 
-function employees(employee){
+  function employee(name,salary){
+    var friends=[];
     return {
-      sayMyName: function(employee){
-        return "This employee is named: " + employee.name;
+      name: name,
+      salary: salary,
+      sayMyName: function(){
+        return "This employee is named: " + name;
       },
-      sayhello: function(employee){
-        return "Hello " + employee.name;
+      sayhello: function(){
+        return "Hello " + name;
       },
       increaseSalary: function(n){
-        return employee.salary= employee.salary + n;
+        return salary= salary + n;
       },
-      addFriend: function(employee, friend){
-        employee.friends= friend;
+      addFriend: function(friend){
+        friends.push(friend.name);
+        //friends.push(friend);
         return "you just became friends with " + friend.name;
       },
-      friendList: function(employee){
-       return you have 
+      listfriends: function(){
+       return "you have " + friends.length + " friend(s).";
       }
-    }
-}
+    }   
+  }
 
 
   // employeeA.sayMyName(); // "jack"
@@ -76,48 +80,41 @@ function employees(employee){
   //lets create a pet class using OOP concept,
   // a - we need to create the pets (lets create only one for now), the invocation should take the name of the pet. 
 
+
+
   function Pet(petName){
     var pets={}
-
+    pets.name= petName;
     pets.addInfo= addInfo;
     pets.increaseAge= increaseAge;
     pets.availibility= false;
-    pets.available= available;
-    pets.changeAvailibility= changeAvailibility;
+    pets.available= available
+    pets.changeState= changeState;
 
 
     return pets;
   }
 
-  function addInfo(age, owner, gender, species){
-    return {
-      age: age,
-      owner: owner,
-      gender: gender,
-      species: species
-    };
+  var addInfo= function(age, owner, gender, species){
+      this.age= age;
+      this.owner= owner;
+      this.gender= gender;
+      this.species= species
   }
 
-  function increaseAge(n){
-   return this.addInfo.age= this.addInfo + n;
+  var increaseAge= function(n){
+   return this.age= this.age + n;
   }
 
-  function available(name){
-    if(name===petName){
-      this.availibility= true;
-      return 'This pet is available.'
-    }
-    return 'This pet is not available.'
-    
+  var available= function(){
+  	return this.availibility;
   }
 
-  function changeAvailibility(){
-    if(this.availibility===true){
-      return this.availibility= false;
-    }
-    if(this.available===false){
-      return this.availibility= true;
-    }
+  var changeState= function(){
+  	if(this.availibility===true){
+  		this.availibility= false;
+  	}
+  	this.availibility= true;
   }
 
   // var pet1 = Pet("doggy");
